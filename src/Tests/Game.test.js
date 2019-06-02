@@ -109,11 +109,55 @@ describe('<Game />', () => {
         expect(wrapper.instance().state.winner).toEqual("O");
     })
 
-    it('TEst if checkWInner is setting winner vertically' , () => {
+    it('Test if checkWinner is setting winner vertically' , () => {
         let wrapper = shallow(<Game />);
         wrapper.setState({
             board : ["X","O",null,"X",null,null,"X",null,"O"],
             currentPlayer:"X",
+            winner : null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("X");
+    })
+
+    it('Test if checkWinner is setting winner vertically', () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board :["X","O",null,"X","O",null,"X","O","O"],
+            currentPlayer : "O",
+            winner: null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("O");
+    });
+
+    it('Test if checkWinner is setting winner vertically', () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board :["O","X","X","X",null,"X","O","O","X"],
+            currentPlayer : "X",
+            winner: null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("X");
+    });
+
+    it('Test if checkWinner is setting winner diagonally', ()=>{
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["O","X","X",null,"O","X","O","X","O"],
+            currentPlayer: "O",
+            winner : null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("O");
+    })
+
+    it('Test if checkWinner is setting winner diagonally', ()=>{
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["O","X","X","X","X",null,"X","O",null],
+            currentPlayer: "X",
             winner : null
         })
         wrapper.instance().checkWinner();
