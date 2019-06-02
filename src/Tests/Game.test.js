@@ -11,4 +11,20 @@ describe('<Game />', () => {
 		let wrapper = shallow(<Game />);
 		expect(wrapper.find('div.box')).toHaveLength(9);
     });
+
+    it('Test if handleSquareClick is triggered on click of square', () => {
+        let wrapper = shallow(<Game />);
+        let spy = jest.spyOn(wrapper.instance(), 'handleSquareClick');
+        wrapper.find('div.box').first().simulate('click');
+        expect(spy).toHaveBeenCalled();
+    });
+
+    it('Test if handleSquareClick is updating board', () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : Array(9).fill(null)
+        })
+        wrapper.instance().handleSquareClick(5);
+        expect(wrapper.instance().state.board[5]).toEqual("X");
+    });
 })

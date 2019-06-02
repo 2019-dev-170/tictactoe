@@ -10,6 +10,15 @@ class Game extends Component {
         }
     }
 
+    handleSquareClick(index){
+
+        let newBoard = this.state.board;
+        newBoard[index] = "X";
+        this.setState({
+            board :  newBoard        
+        })
+    }
+
     renderGrid(){
         return this.state.board.map(
             (box,index) => <div className="box" key={index} onClick={() => this.handleSquareClick(index)}>{box}</div>
