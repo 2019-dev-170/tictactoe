@@ -69,9 +69,16 @@ class Game extends Component {
   }
 
   renderGameStatus() {
-    if (this.state.noOfMoves === 9) {
-      return <h3 className="draw">Match is a Draw</h3>;
-    }
+      if(this.state.winner){
+        return <h3 className="win">{this.state.winner} is Winner</h3>;
+      }else{
+        if (this.state.noOfMoves === 9) {
+            return <h3 className="draw">Match is a Draw</h3>;
+          }
+          else{
+              return <h3> Current Player: {this.state.currentPlayer}</h3>
+          }
+      }
   }
 
   render() {

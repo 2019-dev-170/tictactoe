@@ -11,3 +11,11 @@
   flex-wrap: wrap;
   width: 320px;
 }
+
+.win {
+  color: green;
+}
+
+.draw {
+  color: blue;
+}
