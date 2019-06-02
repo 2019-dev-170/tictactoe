@@ -6,15 +6,17 @@ class Game extends Component {
     constructor(props){
         super(props);
         this.state = {
-            board : Array(9).fill(null)
+            board : Array(9).fill(null),
+            currentPLayer : "X"
         }
     }
 
     handleSquareClick(index){
 
         let newBoard = this.state.board;
-        newBoard[index] = "X";
+        newBoard[index] = this.state.currentPlayer; 
         this.setState({
+            currentPlayer:  this.state.currentPlayer === "X" ? "O" : "X",
             board :  newBoard        
         })
     }
