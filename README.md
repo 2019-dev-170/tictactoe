@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to Tic-Tac-Toe
 
-## Available Scripts
+Tic-tac-toe is a paper-and-pencil game for two players, _X_and _O_, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
-In the project directory, you can run:
+## Prerequisite
 
-### `npm start`
+[Node](https://nodejs.org/en/) has to be pre-installed.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Navigate to root directory where the package.json is present and run the following command.
 
-### `npm test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Starting Application
 
-### `npm run build`
+Navigate to root directory where the package.json is present and run the following command.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm start
+```
+Application will start and it will open in the default browser, if it fails to open use the [link](http://localhost:3000/).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Test Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Navigate to root directory where the package.json is present and run the following command to check the unit testing results.
 
-### `npm run eject`
+```bash
+npm test
+```
+## Test Coverage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Navigate to root directory where the package.json is present and run the following command to check the Test Coverage for the application.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm test -- --coverage
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## This App consists of 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### _Header Component
+   This will loading the header component of the application
+   
+### _Game Component
+   This will have the functionality to load the game and the actions performed in the game.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### _GameStatus Component
+   This will have functionality related to the status of the game Current Player / Winner / Match is a Draw.
