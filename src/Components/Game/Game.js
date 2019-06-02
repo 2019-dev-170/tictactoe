@@ -3,19 +3,24 @@ import './Game.css';
 
 class Game extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            board : Array(9).fill(null)
+        }
+    }
+
+    renderGrid(){
+        return this.state.board.map(
+            (box,index) => <div className="box" key={index} onClick={() => this.handleSquareClick(index)}>{box}</div>
+        )
+    }
+
     render (){
         return(
 
             <div className="board">
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
-                <div className = "box"></div>
+                {this.renderGrid()}
             </div>
 
         );
