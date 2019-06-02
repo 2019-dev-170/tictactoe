@@ -180,36 +180,33 @@ describe("<Game />", () => {
   });
 
   it("Test if handleSquareClick ", () => {
-    let wrapper = shallow(<Game />);
+    let wrapper = mount(<Game />);
     wrapper.setState({
       board: ["O", "X", "X", "X", "O", "O", "O", "O", "X"],
       currentPlayer: "O",
       winner: null,
       noOfMoves: 9
     });
-    let status = wrapper.instance().renderGameStatus();
     expect(wrapper.find("h3.draw").text()).toEqual("Match is a Draw");
   });
   it("Test if corrrect status is rendered", () => {
-    let wrapper = shallow(<Game />);
+    let wrapper = mount(<Game />);
     wrapper.setState({
       board: ["O", "X", "X", "X", null, "X", "O", "O", "X"],
       currentPlayer: "O",
       winner: "X",
       noOfMoves: 5
     });
-    let status = wrapper.instance().renderGameStatus();
     expect(wrapper.find("h3.win").text()).toEqual("X is Winner");
   });
   it("Test if corrrect status is rendered", () => {
-    let wrapper = shallow(<Game />);
+    let wrapper = mount(<Game />);
     wrapper.setState({
       board: ["X", null, null, null, null, null, null, null, null],
       currentPlayer: "O",
       winner: null,
       noOfMoves: 1
     });
-    let status  = wrapper.instance().renderGameStatus();
     expect(wrapper.find("h3").text()).toEqual("Current Player : O");
   });
 });

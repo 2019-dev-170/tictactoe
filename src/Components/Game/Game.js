@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Game.css";
+import GameStatus from "../GameStatus/GameStatus";
 
 class Game extends Component {
   constructor(props) {
@@ -68,23 +69,11 @@ class Game extends Component {
     ));
   }
 
-  renderGameStatus() {
-      if(this.state.winner){
-        return <h3 className="win">{this.state.winner} is Winner</h3>;
-      }else{
-        if (this.state.noOfMoves === 9) {
-            return <h3 className="draw">Match is a Draw</h3>;
-          }
-          else{
-              return <h3> Current Player: {this.state.currentPlayer}</h3>
-          }
-      }
-  }
-
+  
   render() {
     return (
       <div>
-        {this.renderGameStatus()}
+        <GameStatus currentPlayer={this.state.currentPlayer} winner={this.state.winner} noOfMoves={this.state.noOfMoves}/>
         <div className="board">{this.renderGrid()}</div>
       </div>
     );
