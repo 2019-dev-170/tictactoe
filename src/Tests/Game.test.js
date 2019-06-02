@@ -75,4 +75,37 @@ describe('<Game />', () => {
         wrapper.instance().handleSquareClick(5);
         expect(wrapper.instance().state.board[5]).toEqual("X");
     })
+
+    it('Test if checkWinner is setting winner horizontally' , () =>{
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["X","X","X","O","O",null,null,null,null],
+            currentPlayer : "X",
+            winner: null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("X");
+    })
+
+    it('Test if checkWinner is setting winner horizontally' , () =>{
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["O","O", null,"X","X","X",null,null,null],
+            currentPlayer : "X",
+            winner: null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("X");
+    })
+
+    it('Test if checkWinner is setting winner horizontally' , () =>{
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["X","X", null,"X",null,null,"O","O","O"],
+            currentPlayer : "O",
+            winner: null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("O");
+    })
 })

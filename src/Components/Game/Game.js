@@ -7,7 +7,25 @@ class Game extends Component {
         super(props);
         this.state = {
             board : Array(9).fill(null),
-            currentPlayer : "X"
+            currentPlayer : "X",
+            winner : null
+        }
+    }
+
+    checkWinner(){
+        let winCombinations = [
+            ["0" , "1" , "2"],
+            ["3" , "4" , "5"],
+            ["6" , "7" , "8"]
+        ]
+
+        for(let i=0; i< winCombinations.length ; i++){
+            const [a,b,c] = winCombinations[i];
+            if(this.state.board[a] && (this.state.board[a] === this.state.board[b]) && (this.state.board[a] === this.state.board[c])){
+                this.setState({
+                    winner :  this.state.currentPlayer 
+                })    
+            }
         }
     }
 
@@ -20,6 +38,7 @@ class Game extends Component {
                 currentPlayer:  this.state.currentPlayer === "X" ? "O" : "X",
                 board :  newBoard        
             })
+            this.checkWinner();
         }
     }
 
