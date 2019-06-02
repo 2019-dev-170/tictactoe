@@ -57,6 +57,15 @@ class Game extends Component {
     }
   }
 
+  resetGame(e) {
+    this.setState({
+      currentPlayer: "X",
+      winner: null,
+      board: Array(9).fill(null),
+      noOfMoves: 0
+    });
+  }
+
   renderGrid() {
     return this.state.board.map((box, index) => (
       <div
@@ -69,11 +78,17 @@ class Game extends Component {
     ));
   }
 
-  
   render() {
     return (
       <div>
-        <GameStatus currentPlayer={this.state.currentPlayer} winner={this.state.winner} noOfMoves={this.state.noOfMoves}/>
+        <GameStatus
+          currentPlayer={this.state.currentPlayer}
+          winner={this.state.winner}
+          noOfMoves={this.state.noOfMoves}
+          resetGame={(e) => {
+						this.resetGame(e);
+					}}
+        />
         <div className="board">{this.renderGrid()}</div>
       </div>
     );

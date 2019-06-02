@@ -187,7 +187,7 @@ describe("<Game />", () => {
       winner: null,
       noOfMoves: 9
     });
-    expect(wrapper.find("h3.draw").text()).toEqual("Match is a Draw");
+    expect(wrapper.find("h3.draw").text()).toEqual("Match is a Draw ");
   });
   it("Test if corrrect status is rendered", () => {
     let wrapper = mount(<Game />);
@@ -197,7 +197,7 @@ describe("<Game />", () => {
       winner: "X",
       noOfMoves: 5
     });
-    expect(wrapper.find("h3.win").text()).toEqual("X is Winner");
+    expect(wrapper.find("h3.win").text()).toEqual("X is Winner ");
   });
   it("Test if corrrect status is rendered", () => {
     let wrapper = mount(<Game />);
@@ -207,6 +207,35 @@ describe("<Game />", () => {
       winner: null,
       noOfMoves: 1
     });
-    expect(wrapper.find("h3").text()).toEqual("Current Player : O");
+    expect(wrapper.find("h3").text()).toEqual("Current Player : O ");
+  });
+
+  it("Test if handleSquareClick is triggered on click of square", () => {
+    let wrapper = mount(<Game />);
+    let spy = jest.spyOn(wrapper.instance(), "resetGame");
+    wrapper.setState({
+      board: ["X", null, null, null, null, null, null, null, null],
+      currentPlayer: "O",
+      winner: null,
+      noOfMoves: 1
+    });
+    wrapper.find("input.button").simulate("click");
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it("Test if resetGame sets the game to start", () => {
+    let wrapper = shallow(<Game />);
+    wrapper.setState({
+      board: ["X", null, null, null, null, null, null, null, null],
+      currentPlayer: "O",
+      winner: null,
+      noOfMoves: 1
+    });
+    const mockEvent = {
+      target: {}
+    };
+    wrapper.instance().resetGame(mockEvent);
+    expect(wrapper.instance().state.currentPlayer).toEqual("X");
+    expect(wrapper.instance().state.noOfMoves).toEqual(0);
   });
 });
