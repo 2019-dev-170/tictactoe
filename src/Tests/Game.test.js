@@ -108,4 +108,15 @@ describe('<Game />', () => {
         wrapper.instance().checkWinner();
         expect(wrapper.instance().state.winner).toEqual("O");
     })
+
+    it('TEst if checkWInner is setting winner vertically' , () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : ["X","O",null,"X",null,null,"X",null,"O"],
+            currentPlayer:"X",
+            winner : null
+        })
+        wrapper.instance().checkWinner();
+        expect(wrapper.instance().state.winner).toEqual("X");
+    })
 })
