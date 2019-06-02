@@ -7,18 +7,20 @@ class Game extends Component {
         super(props);
         this.state = {
             board : Array(9).fill(null),
-            currentPLayer : "X"
+            currentPlayer : "X"
         }
     }
 
     handleSquareClick(index){
 
-        let newBoard = this.state.board;
-        newBoard[index] = this.state.currentPlayer; 
-        this.setState({
-            currentPlayer:  this.state.currentPlayer === "X" ? "O" : "X",
-            board :  newBoard        
-        })
+        if(this.state.board[index] === null){
+            let newBoard = this.state.board;
+            newBoard[index] = this.state.currentPlayer; 
+            this.setState({
+                currentPlayer:  this.state.currentPlayer === "X" ? "O" : "X",
+                board :  newBoard        
+            })
+        }
     }
 
     renderGrid(){

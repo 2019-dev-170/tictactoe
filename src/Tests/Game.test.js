@@ -50,4 +50,29 @@ describe('<Game />', () => {
         wrapper.instance().handleSquareClick(0);
         expect(wrapper.instance().state.board[0]).toEqual("O");
     });
+
+    it('Test if handleSquareClick is not updating currentPlayer on multiclicks', () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board: Array(9).fill(null),
+            currentPlayer : "X"
+        })
+        wrapper.instance().handleSquareClick(5);
+        expect(wrapper.instance().state.board[5]).toEqual("X");
+        expect(wrapper.instance().state.currentPlayer).toEqual("O");
+        wrapper.instance().handleSquareClick(5);
+        expect(wrapper.instance().state.currentPlayer).toEqual("O");
+    })
+
+    it('Test if handleSquareClick is not updating board on multiclicks', () => {
+        let wrapper = shallow(<Game />);
+        wrapper.setState({
+            board : Array(9).fill(null),
+            currentPlayer: "X"
+        })
+        wrapper.instance().handleSquareClick(5);
+        expect(wrapper.instance().state.board[5]).toEqual("X");
+        wrapper.instance().handleSquareClick(5);
+        expect(wrapper.instance().state.board[5]).toEqual("X");
+    })
 })
