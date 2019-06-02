@@ -178,4 +178,16 @@ describe("<Game />", () => {
     expect(wrapper.instance().state.board[2]).toEqual(null);
     expect(wrapper.instance().state.currentPlayer).toEqual("X");
   });
+
+  it('Test if handleSquareClick ', () => {
+    let wrapper = shallow(<Game />);
+    wrapper.setState({
+        board :["O","X","X","X","O","O","O","O","X"],
+        currentPlayer : "O",
+        winner: null,
+        noOfMoves: 9
+    })
+    let status  = wrapper.instance().renderGameStatus();
+    expect(wrapper.find('h3.draw').text()).toEqual('Match is a Draw');
+});
 });

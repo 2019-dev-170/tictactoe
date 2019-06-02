@@ -7,7 +7,8 @@ class Game extends Component {
     this.state = {
       board: Array(9).fill(null),
       currentPlayer: "X",
-      winner: null
+      winner: null,
+      noOfMoves: 0
     };
   }
 
@@ -38,12 +39,18 @@ class Game extends Component {
   }
 
   handleSquareClick(index) {
-    if (!this.state.winner && this.state.board[index] === null) {
+    if (
+      !this.state.winner &&
+      this.state.board[index] === null &&
+      this.state.noOfMoves <= 9
+    ) {
       let newBoard = this.state.board;
+      let moves = this.state.noOfMoves;
       newBoard[index] = this.state.currentPlayer;
       this.setState({
         currentPlayer: this.state.currentPlayer === "X" ? "O" : "X",
-        board: newBoard
+        board: newBoard,
+        noOfMoves: moves + 1
       });
       this.checkWinner();
     }
@@ -61,8 +68,19 @@ class Game extends Component {
     ));
   }
 
+  renderGameStatus() {
+    if (this.state.noOfMoves === 9) {
+      return <h3 className="draw">Match is a Draw</h3>;
+    }
+  }
+
   render() {
-    return <div className="board">{this.renderGrid()}</div>;
+    return (
+      <div>
+        {this.renderGameStatus()}
+        <div className="board">{this.renderGrid()}</div>
+      </div>
+    );
   }
 }
 
